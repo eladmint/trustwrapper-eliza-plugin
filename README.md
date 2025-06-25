@@ -453,3 +453,16 @@ npm install @trustwrapper/eliza-verification-plugin
 ```
 
 [**Get Started Today →**](https://trustwrapper.io/eliza/getting-started)
+## Configuration
+
+### API Endpoint
+
+By default, the plugin connects to the public TrustWrapper API at `http://74.50.113.152:8083`. You can override this by setting the environment variable:
+
+```bash
+export TRUSTWRAPPER_API_URL=https://your-custom-api.com
+```
+
+### API Documentation
+
+View the full API documentation at: http://74.50.113.152:8083/docs
