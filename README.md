@@ -2,13 +2,15 @@
 
 **Universal AI Verification** - The first and only universal trust verification platform for any AI agent built on the Eliza framework.
 
-[![npm version](https://badge.fury.io/js/@trustwrapper%2Feliza-verification-plugin.svg)](https://www.npmjs.com/package/@trustwrapper/eliza-verification-plugin)
-[![Downloads](https://img.shields.io/npm/dm/@trustwrapper/eliza-verification-plugin.svg)](https://www.npmjs.com/package/@trustwrapper/eliza-verification-plugin)
+[![npm version](https://badge.fury.io/js/trustwrapper-eliza-plugin.svg)](https://www.npmjs.com/package/trustwrapper-eliza-plugin)
+[![Downloads](https://img.shields.io/npm/dm/trustwrapper-eliza-plugin.svg)](https://www.npmjs.com/package/trustwrapper-eliza-plugin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Eliza Framework](https://img.shields.io/badge/Eliza-Compatible-brightgreen)](https://github.com/ai16z/eliza)
 
-> **🎉 Production Ready**: 3,051 lines of enterprise-grade code with comprehensive testing and documentation
+> ⚠️ **CRITICAL SECURITY ADVISORY**: v1.0.0 contains architectural vulnerabilities. See [SECURITY_ADVISORY.md](./SECURITY_ADVISORY.md) for details. **DO NOT use for production trading with real funds.**
+
+> **🚧 v2.0.0 Coming Soon**: Local-first architecture with true zero-knowledge verification
 
 ## 🎯 **Why TrustWrapper?**
 
@@ -44,12 +46,12 @@ AI agents need trust verification to operate safely in financial and business en
 
 ### Installation
 ```bash
-npm install @trustwrapper/eliza-verification-plugin
+npm install trustwrapper-eliza-plugin
 ```
 
 ### Basic Usage
 ```typescript
-import { TrustWrapperPlugin } from '@trustwrapper/eliza-verification-plugin';
+import { TrustWrapperPlugin } from 'trustwrapper-eliza-plugin';
 import { AgentRuntime } from '@ai16z/eliza';
 
 // Add to your Eliza agent
@@ -146,7 +148,7 @@ await agent.verify({
 
 ### **DeFi Trading Agent**
 ```typescript
-import { TrustWrapperPlugin } from '@trustwrapper/eliza-verification-plugin';
+import { TrustWrapperPlugin } from 'trustwrapper-eliza-plugin';
 
 const defiAgent = new Agent({
   name: 'DeFi Trading Bot',
@@ -431,6 +433,48 @@ We welcome contributions from the AI agent community!
 - 🔧 [**Pull Requests**](https://github.com/lamassu-labs/trustwrapper-eliza-plugin/pulls)
 - 📖 [**Documentation Improvements**](https://github.com/lamassu-labs/trustwrapper-docs)
 
+## 🔒 **Security Considerations**
+
+### ⚠️ **Critical Security Advisory for v1.0.0**
+
+TrustWrapper v1.0.0 has architectural security vulnerabilities that could expose trading strategies. Please review our [SECURITY_ADVISORY.md](./SECURITY_ADVISORY.md) for full details.
+
+### **Known Vulnerabilities:**
+1. **Pre-Trade Information Disclosure** - Sends complete trading decisions before execution
+2. **Centralized Point of Failure** - Single API endpoint processes all decisions
+3. **Front-Running Risk** - External service sees trades before they execute
+4. **No Encryption** - HTTP endpoint without TLS
+
+### **Recommended Usage:**
+- ✅ **Safe**: Post-trade auditing and compliance reporting
+- ✅ **Safe**: Demo/testing with simulated trades
+- ❌ **Unsafe**: Pre-trade verification with real funds
+- ❌ **Unsafe**: Production trading environments
+
+### **Secure Alternatives:**
+```typescript
+// Option 1: Local verification only
+const verifyLocally = (decision) => {
+  // Implement verification logic within your agent
+  return localVerificationLogic(decision);
+};
+
+// Option 2: Post-trade auditing only
+const auditAfterExecution = async (executedTrade) => {
+  // Safe to send after trade is complete
+  await trustWrapper.auditTrade(executedTrade);
+};
+```
+
+### **v2.0.0 Security Roadmap:**
+- 🔐 Local-first verification architecture
+- 🛡️ True zero-knowledge proofs
+- 🔒 End-to-end encryption
+- 🌐 Decentralized verification network
+- 📱 Client-side verification SDK
+
+**Report Security Issues**: security@trustwrapper.io
+
 ## 📄 **License**
 
 MIT License - see [LICENSE](LICENSE) for details.
@@ -449,7 +493,7 @@ Lamassu Labs builds trust infrastructure for AI systems. Named after the ancient
 **Ready to add trust verification to your AI agents?**
 
 ```bash
-npm install @trustwrapper/eliza-verification-plugin
+npm install trustwrapper-eliza-plugin
 ```
 
 [**Get Started Today →**](https://trustwrapper.io/eliza/getting-started)
